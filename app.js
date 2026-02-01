@@ -1,15 +1,9 @@
+const http = require('http');
 
-const btn = document.querySelector('button');
-const inputEl = document.querySelector('input');
-const list = document.querySelector('ul');
+const server = http.createServer((request, response) => {
+    response.setHeader('Content-Type', 'text/html');
+    response.write('<h1>Hello there !</h1>');
+    response.end();
+});
 
-function addGoal()
-{
-    const inputValue = inputEl.value;
-    const listItem = document.createDocumentFragment('li');
-
-    listItem.textContent = inputValue;
-    list.appendChild(listItem);
-}
-
-btn.addEventListener('click', addGoal);
+server.listen(3000);
